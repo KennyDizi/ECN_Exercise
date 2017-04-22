@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+    x:Class="ECN_Exercise.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:ECN_Exercise.Sources.Pages;assembly=ECN_Exercise"
+    xmlns:viewModels="clr-namespace:ECN_Exercise.Sources.ViewModels;assembly=ECN_Exercise"
+    Title="ECN_Exercise"
+    x:TypeArguments="viewModels:MainPageViewModel"
+    BindingContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainPageViewModel}">
+
+    <StackLayout Spacing="10" VerticalOptions="Start">
+        <StackLayout
+            x:Name="StackLayoutCalculating"
+            IsVisible="False"
+            Orientation="Horizontal"
+            Spacing="10">
+            <ActivityIndicator x:Name="ActivityIndicatorCalculating" IsRunning="False" />
+            <Label
+                Text="Calculating"
+                TextColor="Accent"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <Button
+            x:Name="ButtonGetResult"
+            AutomationId="ButtonGetResult"
+            Command="{Binding CalculateCommand}"
+            Text="Calculate" />
+
+        <Button
+            x:Name="ButtonGetResultWithMultiPoint"
+            AutomationId="ButtonGetResultWithMultiPoint"
+            Command="{Binding CalculateMultiPointCommand}"
+            Text="Calculate with multi point" />
+    </StackLayout>
+</pages:BasePage>
